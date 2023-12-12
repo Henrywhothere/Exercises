@@ -2,10 +2,12 @@ import random
 
 random_word = ["cat", "dog", "lion", "bird", "monkey"]
 
+#choose random words
 def get_word(random_word):
     word = random.choice(random_word)
     return word.upper()
 
+#create hangman visual 
 def display_hangman(tries):
     stages = ["""
         ------
@@ -73,7 +75,7 @@ def display_hangman(tries):
     """]
     return stages[tries]
 
-
+#play function
 def play(word):
     word_completion = "_" *len(word)
     guessed = False
@@ -128,6 +130,7 @@ def play(word):
         print("Sorry, you ran out of tries. The word was " + word)
 
 
+#start game
 def main():
     word = get_word(random_word)
     play(word)
