@@ -1,0 +1,47 @@
+import matplotlib.pyplot as plt
+from matplotlib.patches import Patch 
+
+
+
+
+x = ["thực tế","mong đợi"]
+
+real_to = [425, 1701, 1609, 1276, 894, 603]
+piloting_to = [600, 1920, 1855, 1545, 1055, 970]
+yax3_1 = [sum(real_to), sum(piloting_to)]
+yax3_2 = [sum(real_percent),sum(piloting_percent)]
+color1 = ['red', 'yellow', 'green', 'black', 'blue', 'orange']
+color2 = ["#0066CC", "#990000"]
+red_patch = Patch(color='red', label="cyling")
+yellow_patch = Patch(color='yellow', label="running")
+green_patch = Patch(color="green", label="moutain")
+black_patch = Patch(color="black", label="fitness")
+blue_patch = Patch(color="blue", label="water")
+orange_patch = Patch(color="orange", label="racket teamsport")
+
+
+fig, (ax1,ax2) = plt.subplots(nrows=2, ncols=1,figsize=(10,10))
+
+#biểu đồ 1: so sánh TO các team giữa thực tế với mong đợi
+ax1.scatter(real_to, piloting_to, color=color1)
+ax1.grid(alpha=0.2)
+ax1.set_xlim([0,2000])
+ax1.set_title("TO giữa các team tháng 4")
+ax1.set_xlabel("TO mong đợi")
+ax1.set_ylabel("TO thực tế")
+ax1.legend(loc="upper left", handles=[red_patch, yellow_patch, green_patch, black_patch, blue_patch, orange_patch])
+
+
+#biểu đồ 3: so sánh tổng TO store giữa thực tế với mong đợi
+plot2= ax2.barh(x, yax3_1, color= color2)
+ax2.grid(alpha=0.2)
+ax2.bar_label(plot2) #tạo tiêu đề cho bar
+ax2.set_yticks(x, labels=x)
+ax2.invert_yaxis()
+ax2.set_title("TO cửa hàng tháng 4")
+ax2.set_xlim([0,10000])
+
+
+#fig.savefig("bài tập mới.png")
+
+
