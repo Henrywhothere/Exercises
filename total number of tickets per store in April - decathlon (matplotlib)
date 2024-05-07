@@ -1,0 +1,27 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.patches import Patch 
+
+
+decathlon = pd.read_csv("decathlon_sale_performance.csv")
+
+
+ticket = decathlon["ticket.ticket"]
+stores_name = ["Thanh Xuan", "Thao Dien", "Van Hanh", "Hai Ba Trung", "Tan Phu", "Long Bien"]
+color = ["#0066CC", "#CC6600", "#CC6600", "#990000", "#CC6600", "#990000"]
+
+blue_patch = Patch(color='#0066CC', label='>15000')
+orange_patch = Patch(color='#CC6600', label='>=10000')
+red_patch = Patch(color='#990000', label='<10000')
+
+
+fig, ax = plt.subplots(figsize=(7,6))
+ax.bar(stores_name, ticket, color=color)
+ax.plot(stores_name, ticket, color='k', linestyle='--')
+#ax.set_facecolor("#FFFF66")
+ax.grid(alpha=0.2)
+ax.set_ylabel("Total Ticket")
+ax.set_title("Total number of tickets per store in April")
+ax.legend(handles=[blue_patch, orange_patch, red_patch])
+
+#fig.savefig("ticket_decathlon_plot.png")
