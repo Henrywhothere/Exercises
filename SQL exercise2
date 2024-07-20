@@ -1,0 +1,7 @@
+SELECT city, LENGTH(city) AS freq 
+FROM station 
+ORDER BY freq ASC, city LIMIT 1;
+
+SELECT city, LENGTH(city) AS freq 
+FROM station 
+ORDER BY freq DESC, city LIMIT 1;
